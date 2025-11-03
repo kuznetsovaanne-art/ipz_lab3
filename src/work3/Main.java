@@ -2,8 +2,15 @@ package work3;
 import work3.flyweight.*;
 import work3.composite.*;
 
+/**
+ * клас, що демонструє роботу двох швблонів
+ */
 
 public class Main {
+    /**
+     * демонтрує обидва шаблони проєктування
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("=== Демонстрація Composite і Flyweight шаблонів (методи-заглушки) ===");
 

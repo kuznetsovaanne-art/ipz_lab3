@@ -1,15 +1,26 @@
 package work3.composite;
 
+/**
+ * Клас Composite у шаблоні Composite, що виконує операції в двома отриманими вузлами
+ */
 public class BinaryExpressionNode extends ExpressionNode{
     private Operator operator;
     private ExpressionNode left;
     private ExpressionNode right;
 
+    /**
+     * Створює вузол виразу із зазначеним оператором
+     * @param operator
+     */
     public BinaryExpressionNode(Operator operator) {
         System.out.println("Конструктор BinaryExpressionNode викликаний з оператором " + operator);
         this.operator = operator;
     }
 
+    /**
+     * Додає два дочірні вузли
+     * @param child
+     */
     @Override
     public void addChild(ExpressionNode child) {
         if (left == null) {
@@ -25,6 +36,11 @@ public class BinaryExpressionNode extends ExpressionNode{
         }
     }
 
+    /**
+     * Повертає рядкове представлення виразу
+     * @param indent
+     * @return
+     */
     @Override
     public String toStructuredString(String indent) {
         System.out.println("Метод toStructuredString викликаний у BinaryExpressionNode");
@@ -34,6 +50,10 @@ public class BinaryExpressionNode extends ExpressionNode{
         return result;
     }
 
+    /**
+     * Обчислює значення виразу з використанням попередньо наданих значень та оператора
+     * @return
+     */
     @Override
     public double evaluate() {
         System.out.println("Метод evaluate викликаний у BinaryExpressionNode з оператором " + operator);
