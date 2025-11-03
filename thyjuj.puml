@@ -1,0 +1,46 @@
+@startuml
+class work3.composite.ConstantNode {
+- double value
++ String toStructuredString(String)
++ double evaluate()
+}
+
+
+class work3.composite.VariableNode {
+- String name
++ String toStructuredString(String)
++ double evaluate()
+}
+
+
+abstract class work3.composite.ExpressionNode {
+# List<ExpressionNode> children
++ void addChild(ExpressionNode)
++ {abstract}String toStructuredString(String)
++ {abstract}double evaluate()
+}
+
+
+class work3.composite.BinaryExpressionNode {
+- Operator operator
+- ExpressionNode left
+- ExpressionNode right
++ void addChild(ExpressionNode)
++ String toStructuredString(String)
++ double evaluate()
+}
+
+
+enum work3.composite.Operator {
++  ADD
++  SUB
++  MUL
++  DIV
+}
+
+
+
+work3.composite.ExpressionNode <|-- work3.composite.ConstantNode
+work3.composite.ExpressionNode <|-- work3.composite.VariableNode
+work3.composite.ExpressionNode <|-- work3.composite.BinaryExpressionNode
+@enduml

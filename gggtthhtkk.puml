@@ -1,0 +1,40 @@
+@startuml
+class work3.flyweight.GlyphFactory {
+- Map<String,Glyph> pool
++ Glyph getGlyph(char,String)
++ int poolSize()
+}
+
+
+class work3.flyweight.GlyphRun {
+- Glyph glyph
+- int x
+- int y
++ void draw()
+}
+
+
+class work3.flyweight.ConcreteGlyphFlyweight {
+- char symbol
+- String font
++ void draw(int,int)
++ char getSymbol()
+}
+
+
+class work3.flyweight.TextRow {
+- List<GlyphRun> runs
++ void addGlyphRun(GlyphRun)
++ void drawRow()
+}
+
+
+interface work3.flyweight.Glyph {
+~ void draw(int,int)
+~ char getSymbol()
+}
+
+
+
+work3.flyweight.Glyph <|.. work3.flyweight.ConcreteGlyphFlyweight
+@enduml

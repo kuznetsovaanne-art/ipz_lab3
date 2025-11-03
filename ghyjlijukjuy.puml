@@ -1,0 +1,86 @@
+@startuml
+class work3.flyweight.GlyphFactory {
+- Map<String,Glyph> pool
++ Glyph getGlyph(char,String)
++ int poolSize()
+}
+
+
+class work3.composite.ConstantNode {
+- double value
++ String toStructuredString(String)
++ double evaluate()
+}
+
+
+class work3.composite.VariableNode {
+- String name
++ String toStructuredString(String)
++ double evaluate()
+}
+
+
+class work3.flyweight.GlyphRun {
+- Glyph glyph
+- int x
+- int y
++ void draw()
+}
+
+
+abstract class work3.composite.ExpressionNode {
+# List<ExpressionNode> children
++ void addChild(ExpressionNode)
++ {abstract}String toStructuredString(String)
++ {abstract}double evaluate()
+}
+
+
+class work3.composite.BinaryExpressionNode {
+- Operator operator
+- ExpressionNode left
+- ExpressionNode right
++ void addChild(ExpressionNode)
++ String toStructuredString(String)
++ double evaluate()
+}
+
+
+class work3.flyweight.ConcreteGlyphFlyweight {
+- char symbol
+- String font
++ void draw(int,int)
++ char getSymbol()
+}
+
+
+enum work3.composite.Operator {
++  ADD
++  SUB
++  MUL
++  DIV
+}
+
+class work3.Main {
++ {static} void main(String[])
+}
+
+class work3.flyweight.TextRow {
+- List<GlyphRun> runs
++ void addGlyphRun(GlyphRun)
++ void drawRow()
+}
+
+
+interface work3.flyweight.Glyph {
+~ void draw(int,int)
+~ char getSymbol()
+}
+
+
+
+work3.composite.ExpressionNode <|-- work3.composite.ConstantNode
+work3.composite.ExpressionNode <|-- work3.composite.VariableNode
+work3.composite.ExpressionNode <|-- work3.composite.BinaryExpressionNode
+work3.flyweight.Glyph <|.. work3.flyweight.ConcreteGlyphFlyweight
+@enduml
